@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - hotfix
 
 jobs:
   build_on_mac:
