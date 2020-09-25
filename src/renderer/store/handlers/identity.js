@@ -174,7 +174,9 @@ export const fetchBalance = () => async (dispatch, getState) => {
   try {
     dispatch(setFetchingBalance(true))
     const address = identitySelectors.address(getState())
-
+    console.log(address, 'address')
+    const identityAddresses = await client.addresses()
+    console.log('verficationAddress', identityAddresses)
     const balanceObj = await client.balance()
     const notes = await client.notes()
     const balance = balanceObj.tbalance / satoshiMultiplier
