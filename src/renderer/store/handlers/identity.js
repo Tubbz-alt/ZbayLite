@@ -178,7 +178,10 @@ export const fetchBalance = () => async (dispatch, getState) => {
     const balanceObj = await client.balance()
     const notes = await client.notes()
     const balance = balanceObj.tbalance / satoshiMultiplier
+    console.log('balance', balance)
+    console.log('balanceobj', balanceObj)
     if (balance > networkFee) {
+      console.log('working here')
       await dispatch(
         shieldBalance({
           to: address,
@@ -248,7 +251,8 @@ export const shieldBalance = ({ to, amount }) => async (dispatch, getState) => {
     return
   }
   shielding = true
-  await client.shield(to)
+  const response = await client.shield(to)
+  console.log('response', response)
   dispatch(
     notificationsHandlers.actions.enqueueSnackbar(
       successNotification({
