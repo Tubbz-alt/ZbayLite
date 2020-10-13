@@ -40,7 +40,7 @@ jobs:
     - name: install electron builder
       run: npm install -g electron-builder@22.3.2
     - name: print ${{ steps.write_file.outputs.filePath }}
-      run: echo ${{ steps.write_file.outputs.filePath }}
+      run: ls
     - name: release
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
